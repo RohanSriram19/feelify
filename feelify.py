@@ -2,7 +2,7 @@ import os
 import streamlit as st
 import numpy as np
 import cv2
-from fer import FER
+from fer_custom import FER
 from PIL import Image
 
 # Handle Render-assigned port
