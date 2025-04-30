@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import cv2
 from PIL import Image
-from fer_custom import FER  
+from fer_custom import FER
 
 st.set_page_config(page_title="Feelify: Understand Your Mood", page_icon="🧠")
 

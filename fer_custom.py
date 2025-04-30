@@ -2,14 +2,13 @@ import cv2
 import numpy as np
 from mtcnn import MTCNN
 from keras.models import load_model
+import os
 
 class FER:
     def __init__(self, mtcnn=True):
         self._detector = MTCNN() if mtcnn else None
-        self._model = load_model(
-            "https://github.com/oarriaga/face_classification/releases/download/v1.0/fer2013_mini_XCEPTION.102-0.66.hdf5",
-            compile=False,
-        )
+        model_path = os.path.join("models", "fer2013_mini_XCEPTION.hdf5")
+        self._model = load_model(model_path, compile=False)
         self._target_size = self._model.input_shape[1:3]
         self._emotion_labels = ['angry', 'disgust', 'fear', 'happy', 'sad', 'surprise', 'neutral']
 
