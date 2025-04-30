@@ -1,12 +1,8 @@
-import os
 import streamlit as st
 import numpy as np
 import cv2
-from fer_custom import FER
 from PIL import Image
-
-# Handle Render-assigned port
-port = os.environ.get("PORT", 8501)
+from fer_custom import FER  
 
 st.set_page_config(page_title="Feelify: Understand Your Mood", page_icon="🧠")
 
@@ -41,8 +37,3 @@ if uploaded_file is not None:
         st.subheader(f"Detected Mood: **{emotion.capitalize()}** {emoji_map.get(emotion, '')}")
     else:
         st.warning("😕 Couldn't detect a face. Try a clearer photo.")
-
-# Run app using correct port when deployed
-if __name__ == "__main__":
-    import streamlit.web.bootstrap
-    streamlit.web.bootstrap.run('feelify.py', f'--server.port={port}', '--server.headless=true')
